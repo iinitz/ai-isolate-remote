@@ -1,0 +1,57 @@
+{
+  "name": "@iinitz/ai-isolate-remote",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Remote isolate driver for TanStack AI Code Mode — runs LLM-generated code in an isolated-vm sandbox on a remote executor server.",
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "typescript",
+    "tanstack",
+    "code-mode",
+    "isolate",
+    "isolated-vm",
+    "sandbox",
+    "code-execution",
+    "remote"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./server": {
+      "types": "./dist/server/index.d.ts",
+      "import": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "dev": "node --no-node-snapshot --env-file-if-exists=.env --import tsx src/server/start.ts",
+    "build": "tsc",
+    "start": "node --no-node-snapshot --env-file-if-exists=.env dist/server/start.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tanstack/ai-code-mode": "^0.2.5"
+  },
+  "optionalDependencies": {
+    "isolated-vm": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}

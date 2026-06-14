@@ -1,0 +1,11 @@
+node_modules/
+dist/
+*.log
+.env
+.DS_Store
+
+# npm-based project — ignore other package managers' lockfiles
+bun.lock
+bun.lockb
+pnpm-lock.yaml
+yarn.lock
