@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Remote isolate driver for TanStack AI Code Mode — runs LLM-generated code in an isolated-vm sandbox on a remote executor server.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iinitz/ai-isolate-remote.git"
+  },
+  "homepage": "https://github.com/iinitz/ai-isolate-remote#readme",
+  "bugs": {
+    "url": "https://github.com/iinitz/ai-isolate-remote/issues"
+  },
   "keywords": [
     "ai",
     "ai-sdk",
