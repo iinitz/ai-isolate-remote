@@ -130,7 +130,7 @@ The executor never holds your tool implementations. Each tool call is recorded w
 
 ## Node version & flags
 
-- `isolated-vm` is a native addon and targets even-numbered **LTS** ABIs. The Docker image is pinned to **Node 24 LTS**. Do not switch to a "Current" release — the V8 ABI may break the build.
+- `isolated-vm@7` requires **Node ≥26**. The Docker image is pinned to **Node 26** (see `.nvmrc` for local dev). It ships prebuilt binaries for linux x64/arm64, so the image needs no native compile.
 - The `--no-node-snapshot` flag is **required** on Node 20+. All run scripts and the Docker `CMD` already pass it.
 - Building from source requires `python3 make g++` (installed in the Docker builder stage).
 
@@ -158,5 +158,5 @@ src/types.ts            request/response wire types shared by both sides
 src/server/index.ts     executor: runInIsolate + HTTP handler + startServer  ("./server")
 src/server/wrap-code.ts sandbox code wrapping + tool-name validation
 src/server/start.ts     runnable entry (Docker CMD / npm start)
-Dockerfile              Node 24 LTS, multi-stage, linux/amd64 + linux/arm64
+Dockerfile              Node 26, multi-stage, linux/amd64 + linux/arm64
 ```

@@ -43,14 +43,15 @@
     "start": "node --no-node-snapshot --env-file-if-exists=.env dist/server/start.js",
     "typecheck": "tsc --noEmit"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@tanstack/ai-code-mode": "^0.2.5"
   },
   "optionalDependencies": {
     "isolated-vm": "^7.0.0"
   },
   "devDependencies": {
-    "@types/node": "^24.0.0",
+    "@tanstack/ai-code-mode": "^0.2.5",
+    "@types/node": "^25.9.3",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3"
   }

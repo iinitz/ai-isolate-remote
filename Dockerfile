@@ -2,15 +2,16 @@
 #   docker build -t ai-isolate-remote .
 #   docker run -p 8080:8080 -e EXECUTOR_TOKEN=change-me ai-isolate-remote
 #
-# Pinned to Node 24 LTS on purpose: isolated-vm is a native addon that targets
-# even-numbered LTS ABIs and does not track bleeding-edge V8, so newer
-# "Current" Node lines may fail to build.
+# Pinned to Node 26: isolated-vm@7 requires Node >=26. It ships prebuilt
+# binaries for linux x64/arm64 (glibc), so no native compile is needed on this
+# image — the node-gyp toolchain below is only a fallback if a prebuild for the
+# running ABI is ever missing.
 
-# ---- builder: compile isolated-vm (native) + transpile TS ----
-FROM node:24-bookworm-slim AS builder
+# ---- builder: install deps (isolated-vm prebuild) + transpile TS ----
+FROM node:26-bookworm-slim AS builder
 WORKDIR /app
 
-# node-gyp toolchain for isolated-vm
+# node-gyp toolchain — fallback only; isolated-vm@7 normally uses a prebuild
 RUN apt-get update && apt-get install -y --no-install-recommends \
       python3 make g++ ca-certificates \
   && rm -rf /var/lib/apt/lists/*
@@ -26,7 +27,7 @@ RUN npm run build
 RUN npm prune --omit=dev
 
 # ---- runtime: slim, no build tools ----
-FROM node:24-bookworm-slim AS runtime
+FROM node:26-bookworm-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
 
