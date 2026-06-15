@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write  # for npm provenance attestation
+      id-token: write  # required for OIDC trusted publishing + provenance
 
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +25,6 @@ jobs:
 
       - run: npm run build
 
-      - run: npm publish --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # No NODE_AUTH_TOKEN: auth happens via OIDC trusted publishing.
+      # Provenance is generated automatically for trusted publishers.
+      - run: npm publish
