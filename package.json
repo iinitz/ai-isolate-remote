@@ -52,15 +52,15 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@tanstack/ai-code-mode": "^0.2.5"
+    "@tanstack/ai-code-mode": "^0.3.4"
   },
   "optionalDependencies": {
     "isolated-vm": "^7.0.0"
   },
   "devDependencies": {
-    "@tanstack/ai-code-mode": "^0.2.5",
-    "@types/node": "^25.9.3",
-    "tsx": "^4.22.4",
+    "@tanstack/ai-code-mode": "^0.3.4",
+    "@types/node": "^26.1.0",
+    "tsx": "^4.22.5",
     "typescript": "^6.0.3"
   }
 }
