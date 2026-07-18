@@ -1,6 +1,6 @@
 {
   "name": "@iinitz/ai-isolate-remote",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "type": "module",
   "description": "Remote isolate driver for TanStack AI Code Mode — runs LLM-generated code in an isolated-vm sandbox on a remote executor server.",
   "repository": {
