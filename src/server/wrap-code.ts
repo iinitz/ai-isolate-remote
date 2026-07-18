@@ -79,9 +79,12 @@ export function wrapCode(
       ${wrappers}
       try {
         const __value = await (async function () { ${code} })();
+        if (__pending.length > 0) {
+          return { status: 'need_tools', toolCalls: __pending, logs: __logs };
+        }
         return { status: 'done', success: true, value: __value, logs: __logs };
       } catch (__e) {
-        if (__e instanceof __ToolCallNeeded) {
+        if (__e instanceof __ToolCallNeeded || __pending.length > 0) {
           return { status: 'need_tools', toolCalls: __pending, logs: __logs };
         }
         return {

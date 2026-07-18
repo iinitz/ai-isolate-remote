@@ -48,6 +48,7 @@
   "scripts": {
     "dev": "node --no-node-snapshot --env-file-if-exists=.env --import tsx src/server/start.ts",
     "build": "tsc",
+    "test": "node --import tsx src/server/wrap-code.test.ts",
     "start": "node --no-node-snapshot --env-file-if-exists=.env dist/server/start.js",
     "typecheck": "tsc --noEmit",
     "changeset": "changeset",
