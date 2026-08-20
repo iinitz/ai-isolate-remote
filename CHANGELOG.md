@@ -1,5 +1,11 @@
 # @iinitz/ai-isolate-remote
 
+## 1.1.0
+
+### Minor Changes
+
+- 9f3ce7f: Require `@tanstack/ai-code-mode` ^0.4.1 (was ^0.3.4) as the peer dependency.
+
 ## 1.0.2
 
 ### Patch Changes
